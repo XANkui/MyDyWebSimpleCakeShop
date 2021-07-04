@@ -49,6 +49,13 @@ public class UserDao {
 		return u;
 	}
 	
+	public User selcetById(int id) throws SQLException {
+		QueryRunner r = new QueryRunner(DBUtil.getDataSource());
+		String sql = "select * from user where id=?";
+		User u=r.query(sql, new BeanHandler<User>(User.class),id);
+		return u;
+	}
+	
 	public void updateUserAddress(User user) throws SQLException {
 		
 		QueryRunner r = new QueryRunner(DBUtil.getDataSource());
@@ -75,4 +82,9 @@ public class UserDao {
 		return r.query(sql,new BeanListHandler<User>(User.class),(pageNo-1)*pageSize,pageSize);
 	}
 	
+	public void delete(int id) throws SQLException {
+		QueryRunner r = new QueryRunner(DBUtil.getDataSource());
+		String sql = "delete from user where id=?";
+		r.update(sql, id);
+	}
 }

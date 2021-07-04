@@ -82,6 +82,20 @@ public class UserService {
 		
 	}
 	
+	public User getUserById(int id) {
+		User user=null;
+		try {
+			user = uDao.selcetById(id);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
+		return user;
+	}
+	
 	public Page getUserPage(int pageNo) {
 		Page p = new Page();
 		p.setPageNo(pageNo);
@@ -106,5 +120,16 @@ public class UserService {
 		
 		p.setList(list);
 		return p;
+	}
+	
+	public boolean deleteUser(int id) {
+		try {
+			uDao.delete(id);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

@@ -21,6 +21,7 @@
 	
 	<div class="text-right"><a class="btn btn-warning" href="${pageContext.request.contextPath }/admin/user_add.jsp">添加客户</a></div>
 		<c:if test="${!empty msg }"><div class="alert alert-success">${msg }</div></c:if>
+		<c:if test="${!empty failMsg }"><div class="alert alert-danger">${failMsg }</div></c:if>
 	<br>
 	
 	<table class="table table-bordered table-hover">
@@ -45,9 +46,9 @@
          	<td><p>${u.phone }</p></td>
          	<td><p>${u.address }</p></td>
 			<td>
-				<a class="btn btn-info" href="userRe.action?id=2">重置密码</a>
-				<a class="btn btn-primary" href="userEdit.action?id=2">修改</a>
-				<a class="btn btn-danger" href="userDelete.action?user.id=2">删除</a>
+				<a class="btn btn-info" href="${pageContext.request.contextPath }/admin/user_reset.jsp?id=${u.id}&username=${u.username}&email=${u.email}">重置密码</a>
+				<a class="btn btn-primary" href="${pageContext.request.contextPath }/admin/user_editshow?id=${u.id}">修改</a>
+				<a class="btn btn-danger" href="${pageContext.request.contextPath }/admin/user_delete?id=${u.id}">删除</a>
 			</td>
        	</tr>
      
