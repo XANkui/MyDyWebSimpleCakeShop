@@ -11,6 +11,37 @@ public class Goods {
 	private int stock;
 	private Type type;
 	
+	
+	private boolean isScroll;
+	
+	// sql 使用时 getIsScroll 默认的 isScorll 不行
+	public boolean getIsScroll() {
+		return isScroll;
+	}
+
+	public void setScroll(boolean isScroll) {
+		this.isScroll = isScroll;
+	}
+
+	public boolean getIsHot() {
+		return isHot;
+	}
+
+	public void setHot(boolean isHot) {
+		this.isHot = isHot;
+	}
+
+	public boolean getIsNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
+	private boolean isHot;
+	private boolean isNew;
+	
 	public Goods() {
 		super();
 	}
