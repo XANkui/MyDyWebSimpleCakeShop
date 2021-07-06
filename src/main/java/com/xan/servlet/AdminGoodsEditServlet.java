@@ -21,13 +21,12 @@ import com.xan.model.Goods;
 import com.xan.service.GoodsService;
 
 /**
- * Servlet implementation class AdminGoodsAddServlet
+ * Servlet implementation class AdminGoodsEditServlet
  */
-@WebServlet("/admin/goods_add")
-public class AdminGoodsAddServlet extends HttpServlet {
+@WebServlet("/admin/goods_edit")
+public class AdminGoodsEditServlet extends HttpServlet {
 	
 	private GoodsService gService = new GoodsService();
-	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,14 +37,29 @@ public class AdminGoodsAddServlet extends HttpServlet {
 			List<FileItem> list = upload.parseRequest(request);
 			
 			Goods g = new Goods();
+			int pageNo =1;
+			int type =0;
+			
 			for(FileItem item:list) {
 				if(item.isFormField()) {
 					switch(item.getFieldName()) {
+						case "id":
+							g.setId(Integer.parseInt(item.getString("utf-8")));
+							break;
+						case "cover":
+							g.setCover((item.getString("utf-8")));
+							break;
+						case "image1":
+							g.setImage1((item.getString("utf-8")));
+							break;
+						case "image2":
+							g.setImage2((item.getString("utf-8")));
+							break;
 						case "name":
 							g.setName(item.getString("utf-8"));
 							break;
 						case "price":
-							g.setPrice(Integer.parseInt(item.getString("utf-8")));
+							g.setPrice(Float.parseFloat(item.getString("utf-8")));
 							break;
 						case "intro":
 							g.setIntro(item.getString("utf-8"));
@@ -55,6 +69,12 @@ public class AdminGoodsAddServlet extends HttpServlet {
 							break;
 						case "typeid":
 							g.setTypeid(Integer.parseInt(item.getString("utf-8")));
+							break;
+						case "pageNo":
+							pageNo = Integer.parseInt(item.getString("utf-8"));
+							break;
+						case "type":
+							type = Integer.parseInt(item.getString("utf-8"));
 							break;
 					}
 				}else {
@@ -92,8 +112,8 @@ public class AdminGoodsAddServlet extends HttpServlet {
 					}
 				}
 			}
-			gService.insert(g);
-			request.getRequestDispatcher("/admin/goods_list").forward(request, response);
+			gService.update(g);
+			request.getRequestDispatcher("/admin/goods_list?pageNo="+pageNo+"&type="+type).forward(request, response);
 			
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block

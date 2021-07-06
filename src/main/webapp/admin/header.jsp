@@ -15,8 +15,8 @@
 					<li ><a href="${pageContext.request.contextPath}/admin/user_list">客户管理</a></li>
 					<li ><a href="${pageContext.request.contextPath}/admin/goods_list">商品管理</a></li>
 					<li ><a href="${pageContext.request.contextPath}/admin/goodstype_list">类目管理</a></li>
-					<li ><a href="adminRe.action">修改密码</a></li>
-					<li><a href="logout.action">退出</a></li>
+<!-- 					<li ><a href="adminRe.action">修改密码</a></li> 可以在前台修改密码 -->
+					<li><a href="${pageContext.request.contextPath}/user_logout">退出</a></li>
 				</ul>
 			</div>
 		</div>

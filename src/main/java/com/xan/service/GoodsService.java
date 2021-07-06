@@ -166,4 +166,31 @@ public class GoodsService {
 			e.printStackTrace();
 		}
 	}
+	public void insert(Goods g) {
+		try {
+			gDao.insert(g);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void update(Goods g) {
+		try {
+			gDao.update(g);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(int id) {
+		try {
+			gDao.delete(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

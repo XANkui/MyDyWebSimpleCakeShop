@@ -68,8 +68,8 @@
 				</c:choose>
 				
 				</p>
-				<a class="btn btn-success" href="goodEdit.action?id=180">修改</a>
-				<a class="btn btn-danger" href="goodDelete.action?good.id=180">删除</a>
+				<a class="btn btn-success" href="${pageContext.request.contextPath }/admin/goods_editshow?id=${g.id}&pageNo=${p.pageNo}&type=${t}">修改</a>
+				<a class="btn btn-danger" href="${pageContext.request.contextPath }/admin/goods_delete?id=${g.id}&pageNo=${p.pageNo}&type=${t}">删除</a>
 			</td>
        	</tr>
      
